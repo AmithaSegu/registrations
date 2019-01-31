@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org /">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8"/>
+</head>
+<body class="container">
+<h1>List Of All Courses</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<title th:text="${title}">List of courses</title>
+<br>
+
+<table class="table">
+    <tr>
+        <th>Course Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Price</th>
+        <th>No. of Seats available</th>
+        <th>Register</th>
+    </tr>
+    <tr th:each="course: ${courses}">
+        <td th:text="${course.coursename}"></td>
+        <td th:text="${course.startdate}"></td>
+        <td th:text="${course.enddate}"></td>
+        <td th:text="${course.price}"></td>
+        <td th:text="${course.availability}"></td>
+        <td th:checked="${course.register}"></td>
+
+    </tr>
+</table>
+
+
+</body>
+</html>

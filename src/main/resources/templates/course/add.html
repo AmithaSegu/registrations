@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org /">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8"/>
+</head>
+<body class="container">
+<h1>Add New Courses</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<form method="post" th:object="${course}">
+    <table>
+        <tr>
+            <label th:for="coursename">Course Name</label>
+            <input th:field="*{coursename}"/>
+            <span th:errors="*{coursename}" class="error"></span>
+        </tr>
+        <tr>
+            <label th:for="startdate">Start Date</label>
+            <input th:field="*{startdate}" th:type="date"/>
+            <span th:errors="*{startdate}" class="error"></span>
+        </tr>
+        <tr>
+            <label th:for="enddate">End Date</label>
+            <input th:field="*{enddate}" th:type="date"/>
+            <span th:errors="*{enddate}" class="error"></span>
+        </tr>
+        <tr>
+            <label th:for="price">Price</label>
+            <input th:field="*{price}"/>
+            <span th:errors="*{price}" class="error"></span>
+        </tr>
+        <tr>
+            <label th:for="availability">Availability</label>
+            <input th:field="*{availability}"/>
+            <span th:errors="*{availability}" class="error"></span>
+        </tr>
+        <tr>
+            <label th:for="register">Register</label>
+            <input th:field="*{register}" th:type="hidden"/>
+            <span th:errors="*{register}" class="error"></span>
+        </tr>
+    </table>
+    <input type="submit" value="Add Course"/>
+
+</form>
+
+</body>
+</html>

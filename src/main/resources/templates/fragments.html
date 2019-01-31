@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org /">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">Default Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav th:fragment="navigation">
+    <a href="/course">List</a> |
+    <a href="/course/add">Add</a> |
+    <a href="/course/report">Report</a>
+</nav>
+
+</body>
+</html>
