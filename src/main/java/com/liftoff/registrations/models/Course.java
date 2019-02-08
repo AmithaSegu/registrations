@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
 
 @Entity
 public class Course {
@@ -14,29 +12,29 @@ public class Course {
     private int id;
 
     @NotNull
-    @Size(min=1, max=25, message = "Please enter a valid course name")
+//    @Size(min=1, max=25, message = "Please enter a valid course name")
     private String coursename;
 
     @NotNull
-    @Size(message = "Please enter a valid start date")
-    private Date startdate;
+//    @Size(message = "Please enter a valid start date")
+    private String startdate;
 
     @NotNull
-    @Size(message = "Please enter a valid end date")
-    private Date enddate;
+//    @Size(message = "Please enter a valid end date")
+    private String enddate;
 
     @NotNull
-    //@Size(message = "Please enter a number of seat for this course")
+//    @Size(message = "Please enter a number of seat for this course")
     private int availability;
 
     @NotNull
-    @Size(min=1, max=10)
+//    @Size(min=1, max=10)
     private float price;
 
     @NotNull
     private boolean register;
 
-    public Course(int id, String coursename, Date startdate, Date enddate,int availability, boolean register) {
+    public Course(int id, String coursename, String startdate, String enddate,int availability, boolean register) {
         this.id = id;
         this.coursename = coursename;
         this.startdate = startdate;
@@ -64,19 +62,19 @@ public class Course {
         this.coursename = coursename;
     }
 
-    public Date getStartdate() {
+    public String getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Date startdate) {
+    public void setStartdate(String startdate) {
         this.startdate = startdate;
     }
 
-    public Date getEnddate() {
+    public String getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(Date enddate) {
+    public void setEnddate(String enddate) {
         this.enddate = enddate;
     }
 

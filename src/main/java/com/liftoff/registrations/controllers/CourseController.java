@@ -41,6 +41,6 @@ public class CourseController {
             return "course/add";
         }
         courseDao.save(course);
-        return "course/index";
+        return "redirect:";
     }
 }
