@@ -10,7 +10,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -29,15 +28,14 @@ public class CourseController {
     public String index(Model model){
         model.addAttribute("title","List Courses");
         model.addAttribute("courses", courseDao.findAll());
+        model.addAttribute(new Course());
         return "course/index";
     }
 
     @RequestMapping(value="", method = RequestMethod.GET)
-    public String processindex(Model model, @RequestParam int [] courseIds){
-        for (int courseId : courseIds){
-            courseDao.findById(courseId);
+    public String processindex(Model model,Course course){
+        return "register"+course.getId();
 
-        }
     }
 
     @RequestMapping(value="add",method= RequestMethod.GET)
