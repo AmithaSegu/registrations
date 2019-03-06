@@ -24,7 +24,7 @@
         <td th:text="${course.enddate}"></td>
         <td th:text="${course.price}"></td>
         <td th:text="${course.availability}"></td>
-        <td><input th:type="checkbox"  th:checked="${course.register}"/> </td>
+        <td><input th:type="checkbox"  th:checked="${course.registered}"/> </td>
     </tr>
 </table>
 <a th:href="@{/register}"><input type="submit" value="Register"/></a>

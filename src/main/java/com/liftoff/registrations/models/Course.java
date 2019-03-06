@@ -3,7 +3,9 @@ package com.liftoff.registrations.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -32,16 +34,21 @@ public class Course {
     private float price;
 
     @NotNull
-    private boolean register;
+    private boolean registered;
 
-    public Course(int id, String coursename, String startdate, String enddate,int availability, boolean register) {
+ //   @OneToOne
+  //  private Register register;
+    @ManyToMany(mappedBy = "course")
+    private List<Register> register;
+
+    public Course(int id, String coursename, String startdate, String enddate,int availability, boolean registered) {
         this.id = id;
         this.coursename = coursename;
         this.startdate = startdate;
         this.enddate = enddate;
         this.availability = availability;
         this.price = price;
-        this.register = register;
+        this.registered = registered;
     }
 
     public Course() { }
@@ -94,11 +101,11 @@ public class Course {
         this.price = price;
     }
 
-    public boolean isRegister() {
-        return register;
+    public boolean isRegistered() {
+        return registered;
     }
 
-    public void setRegister(boolean register) {
-        this.register = register;
+    public void setRegistered(boolean registered) {
+        this.registered = registered;
     }
 }

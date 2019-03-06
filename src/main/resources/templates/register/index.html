@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org /">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8"/>
+</head>
+<body class="container">
+<h1>List Of All Courses</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<title th:text="${title}">Registration form</title>
+<br>
+<div>
+
+</div>
+<form method="post" th:object="${register}">
+    <div class="form-group">
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+        <label th:for="address">Address</label>
+        <input class="form-control" th:field="*{address}" />
+        <span th:errors="*{address}" class="error"></span>
+        <label th:for="city">City</label>
+        <input class="form-control" th:field="*{city}" />
+        <span th:errors="*{city}" class="error"></span>
+        <label th:for="state">State</label>
+        <input class="form-control" th:field="*{state}" />
+        <span th:errors="*{state}" class="error"></span>
+        <label th:for="zipcode">Zipcode</label>
+        <input class="form-control" th:field="*{zipcode}" />
+        <span th:errors="*{zipcode}" class="error"></span>
+        <label th:for="description">Name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+        <label th:for="dob">Date of Birth</label>
+        <input class="form-control" th:field="*{dob}" />
+        <span th:errors="*{dob}" class="error"></span>
+        <label th:for="cardnumber">Card Number</label>
+        <input class="form-control" th:field="*{cardnumber}" />
+        <span th:errors="*{cardnumber}" class="error"></span>
+    </div>
+
+</form>

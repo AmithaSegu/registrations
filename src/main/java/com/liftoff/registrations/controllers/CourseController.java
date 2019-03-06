@@ -2,13 +2,15 @@ package com.liftoff.registrations.controllers;
 
 import com.liftoff.registrations.models.Course;
 import com.liftoff.registrations.models.data.CourseDao;
+import com.liftoff.registrations.models.data.RegisterDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -19,6 +21,10 @@ public class CourseController {
     @Autowired
     private CourseDao courseDao;
 
+    @Autowired
+    private RegisterDao registerDao;
+
+
     @RequestMapping(value = "")
     public String index(Model model){
         model.addAttribute("title","List Courses");
@@ -26,6 +32,13 @@ public class CourseController {
         return "course/index";
     }
 
+    @RequestMapping(value="", method = RequestMethod.GET)
+    public String processindex(Model model, @RequestParam int [] courseIds){
+        for (int courseId : courseIds){
+            courseDao.findById(courseId);
+
+        }
+    }
 
     @RequestMapping(value="add",method= RequestMethod.GET)
     public String displayaddcourse(Model model){
@@ -43,4 +56,6 @@ public class CourseController {
         courseDao.save(course);
         return "redirect:";
     }
+
+
 }
