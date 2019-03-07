@@ -108,8 +108,8 @@ public class Course {
 //    public void setRegistered(boolean registered) {
 //        this.registered = registered;
 //    }
-    public List<Register> getRegister() {
-        return register;
-    }
+//    public List<Register> getRegister() {
+//        return register;
+//    }
 
 }

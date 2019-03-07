@@ -17,20 +17,18 @@ public class AddRegisterCourse {
 
     public AddRegisterCourse() {}
 
-    public AddRegisterCourse(Iterable<Course> course, Register register) {
-        this.courses= course;
+    public AddRegisterCourse(Iterable<Course> courses, Register register) {
+        this.courses = courses;
         this.register = register;
     }
 
-    public void getCourses(Iterable<Course> courses) {
-        this.courses = courses;
+    public Iterable<Course> getCourses() {
+        return courses;
     }
-
 
     public void setCourses(Iterable<Course> courses) {
         this.courses = courses;
     }
-
 
     public Register getRegister() {
         return register;

@@ -129,5 +129,7 @@ public class Register {
     public Course getCourse() {
         return course;
     }
+    public void setCourse(Course course) {
+        this.course=course;  }
 }
 

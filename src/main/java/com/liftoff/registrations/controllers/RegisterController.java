@@ -42,27 +42,16 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.POST)
-        public String processregisterform (Model model,@ModelAttribute @Valid Register register, Errors errors,@PathVariable int id){
+        public String processregisterform (Model model,@ModelAttribute @Valid Register newregister, Errors errors,@PathVariable int id){
             if (errors.hasErrors()) {
                 return "register/index";
             }
-            //course=courseDao.findById(id).get();
-            registerDao.save(register);
-//            AddRegisterCourse form=new AddRegisterCourse(course,register);
+            Course course=courseDao.findById(id).get();
+            newregister.setCourse(course);
+            registerDao.save(newregister);
             model.addAttribute("title", "Welcome");
             return "register/welcome" ;
         }
-//    @RequestMapping(value="confirm",method=RequestMethod.POST)
-//        public String confirmpage (@ModelAttribute AddRegisterCourse form){
-//        Course thecourse=courseDao.findById(form.getCourseId().get());
-//        Register theregister=registerDao.findById(form.getRegisterId.get());
-//        theregister.addItem(thecourse);
-//        registerDao.save(theregister);
-//        return "register/welcome";
-//
-//    }
-
-
 
 }
 
