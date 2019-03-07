@@ -1,15 +1,15 @@
 package com.liftoff.registrations.models;
 
-import org.springframework.data.annotation.Id;
+//import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
 
+@Entity
 public class Register {
 
     @Id
@@ -38,11 +38,17 @@ public class Register {
     @NotNull
     private int cardnumber;
 
-//    @OneToOne
-//    private List<Course> course;
-    @OneToMany
-    @JoinColumn(name="course_id")
-    private List<Course> course=new ArrayList<>();
+
+//    @OneToMany
+//    @JoinColumn(name="course_id")
+//    private List<Course> course=new ArrayList<>();
+
+    @ManyToOne
+    private Course course;
+
+//    public void addItem(Course item){
+//        this.courses.add(item);
+//    }
 
 
     public Register(int id, String name, String address, String city,String state,int zipcode, String dob, int cardnumber) {
@@ -120,10 +126,8 @@ public class Register {
         this.cardnumber = cardnumber;
     }
 
-    public List<Course> getCourse() {
+    public Course getCourse() {
         return course;
     }
-
-
 }
 

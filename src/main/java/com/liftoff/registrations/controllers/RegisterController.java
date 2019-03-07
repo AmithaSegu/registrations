@@ -1,5 +1,6 @@
 package com.liftoff.registrations.controllers;
 
+import com.liftoff.registrations.models.Course;
 import com.liftoff.registrations.models.Register;
 import com.liftoff.registrations.models.data.CourseDao;
 import com.liftoff.registrations.models.data.RegisterDao;
@@ -35,20 +36,33 @@ public class RegisterController {
     public String displayregisterform(Model model, @PathVariable int id) {
         model.addAttribute("title", "Register");
         model.addAttribute(new Register());
-        courseDao.findById(id);
+        Course course=courseDao.findById(id).get();
+        model.addAttribute("course",course);
         return "register/index";
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.POST)
-        public String processregisterform (@ModelAttribute @Valid Register register, Errors errors, Model model,@PathVariable int id){
+        public String processregisterform (Model model,@ModelAttribute @Valid Register register, Errors errors,@PathVariable int id){
             if (errors.hasErrors()) {
                 return "register/index";
             }
+            //course=courseDao.findById(id).get();
             registerDao.save(register);
-            courseDao.findById(id);
+//            AddRegisterCourse form=new AddRegisterCourse(course,register);
             model.addAttribute("title", "Welcome");
-            return "register/welcome";
+            return "register/welcome" ;
         }
+//    @RequestMapping(value="confirm",method=RequestMethod.POST)
+//        public String confirmpage (@ModelAttribute AddRegisterCourse form){
+//        Course thecourse=courseDao.findById(form.getCourseId().get());
+//        Register theregister=registerDao.findById(form.getRegisterId.get());
+//        theregister.addItem(thecourse);
+//        registerDao.save(theregister);
+//        return "register/welcome";
+//
+//    }
+
+
 
 }
 

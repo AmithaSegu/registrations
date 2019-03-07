@@ -25,10 +25,10 @@
         <td th:text="${course.price}"></td>
         <td th:text="${course.availability}"></td>
         <!--<td><input th:type="checkbox"  th:checked="${course.registered}"/> </td>-->
-        <td> <a th:href="'/register' + ${course.id}"><input type="submit" value="Register"/></a></td>
+        <td> <a th:href="'/register/'+${course.id}"><input type="submit" value="Register"/></a></td>
     </tr>
 </table>
-??<a th:href="'/register' + {course.id}"><input type="submit" value="Register"/></a>
+<!--<a th:href="'/register'"><input type="submit" value="Register"/></a>-->
 
 
 </body>

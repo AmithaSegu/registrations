@@ -4,14 +4,19 @@
     <meta charset="UTF-8"/>
 </head>
 <body class="container">
-<h1>List Of All Courses</h1>
+<h1>Register</h1>
 <nav th:replace="fragments :: navigation"></nav>
 <title th:text="${title}">Registration form</title>
 <br>
 <div>
+<div th:object="${course}">
+    <label th:for="coursename">CourseName:</label>
+    <tr th:text="${course.coursename}">CourseName</tr>
 
 </div>
-<form method="post" th:object="${register}">
+
+</div>
+<form  th:object="${register}" action="/register">
     <div class="form-group">
         <label th:for="name">Name</label>
         <input class="form-control" th:field="*{name}" />
@@ -28,9 +33,8 @@
         <label th:for="zipcode">Zipcode</label>
         <input class="form-control" th:field="*{zipcode}" />
         <span th:errors="*{zipcode}" class="error"></span>
-        <label th:for="description">Name</label>
-        <input class="form-control" th:field="*{name}" />
-        <span th:errors="*{name}" class="error"></span>
+
+
         <label th:for="dob">Date of Birth</label>
         <input class="form-control" th:field="*{dob}" />
         <span th:errors="*{dob}" class="error"></span>
@@ -38,5 +42,5 @@
         <input class="form-control" th:field="*{cardnumber}" />
         <span th:errors="*{cardnumber}" class="error"></span>
     </div>
-
+    <a th:href="'/register/welcome'"><input type="submit" value="Register"/></a>
 </form>

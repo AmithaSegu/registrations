@@ -24,7 +24,7 @@ public class CourseController {
     private RegisterDao registerDao;
 
 
-    @RequestMapping(value = "")
+    @RequestMapping(value = "",method = RequestMethod.GET)
     public String index(Model model){
         model.addAttribute("title","List Courses");
         model.addAttribute("courses", courseDao.findAll());
@@ -32,9 +32,9 @@ public class CourseController {
         return "course/index";
     }
 
-    @RequestMapping(value="", method = RequestMethod.GET)
-    public String processindex(Model model,Course course){
-        return "register"+course.getId();
+    @RequestMapping(value="", method = RequestMethod.POST)
+    public String processindex(Model model,@ModelAttribute Course course){
+        return "register/"+course.getId();
 
     }
 
