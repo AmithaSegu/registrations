@@ -6,7 +6,7 @@ import com.liftoff.registrations.models.Register;
 import javax.validation.constraints.NotNull;
 
 public class AddRegisterCourse {
-    private Iterable<Course> courses;
+    private Course courses;
     private Register register;
 
     @NotNull
@@ -17,16 +17,16 @@ public class AddRegisterCourse {
 
     public AddRegisterCourse() {}
 
-    public AddRegisterCourse(Iterable<Course> courses, Register register) {
+    public AddRegisterCourse(Course courses, Register register) {
         this.courses = courses;
         this.register = register;
     }
 
-    public Iterable<Course> getCourses() {
+    public Course getCourses() {
         return courses;
     }
 
-    public void setCourses(Iterable<Course> courses) {
+    public void setCourses(Course courses) {
         this.courses = courses;
     }
 
@@ -53,4 +53,8 @@ public class AddRegisterCourse {
     public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
+
+//    public void Course(Register item){
+//        courses.add(item);
+//    }
 }

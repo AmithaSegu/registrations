@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -32,26 +32,59 @@ public class RegisterController {
 //        return "register/index";
 //    }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public String displayregisterform(Model model, @PathVariable int id) {
+//    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+//    public String displayregisterform(Model model, @PathVariable int id) {
+//        model.addAttribute("title", "Register");
+//        model.addAttribute(new Register());
+//        Course course=courseDao.findById(id).get();
+//        model.addAttribute("course",course);
+//        return "register/index";
+//    }
+//
+//    @RequestMapping(value = "{id}", method = RequestMethod.POST)
+//    public String processregisterform (Model model,@ModelAttribute @Valid Register newregister,@ModelAttribute Course course, Errors errors,@PathVariable int id){
+//        if (errors.hasErrors()) {
+//            return "register/index";
+//        }
+//        course=courseDao.findById(id).get();
+//        newregister.setCourse(course);
+//        registerDao.save(newregister);
+////        AddRegisterCourse form = new AddRegisterCourse(course,newregister);
+//        model.addAttribute("title", "Welcome");
+//        return "register/welcome" ;
+//    }
+
+    @RequestMapping(value = "add", method = RequestMethod.GET)
+    public String displayregisterform(Model model) {
         model.addAttribute("title", "Register");
         model.addAttribute(new Register());
-        Course course=courseDao.findById(id).get();
-        model.addAttribute("course",course);
+        model.addAttribute("course", courseDao.findAll());
         return "register/index";
     }
-
-    @RequestMapping(value = "{id}", method = RequestMethod.POST)
-        public String processregisterform (Model model,@ModelAttribute @Valid Register newregister, Errors errors,@PathVariable int id){
-            if (errors.hasErrors()) {
-                return "register/index";
-            }
-            Course course=courseDao.findById(id).get();
-            newregister.setCourse(course);
-            registerDao.save(newregister);
-            model.addAttribute("title", "Welcome");
-            return "register/welcome" ;
+//    @RequestMapping(value = "add", method = RequestMethod.POST)
+//    public String processregisterform (@ModelAttribute @Valid Register newRegister, Errors errors, @RequestParam int CourseId, Model model){
+//        if (errors.hasErrors()) {
+//            return "register/index";
+//        }
+//        Course course=courseDao.findById(CourseId).get();
+//        newRegister.setCourse(course);
+//        registerDao.save(newRegister);
+//        model.addAttribute("title", "Welcome");
+//        return "register/welcome" ;
+//    }
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public String processregisterform (@ModelAttribute @Valid Register newRegister, Errors errors, @RequestParam int CourseId, Model model){
+        if (errors.hasErrors()) {
+            model.addAttribute("courses", courseDao.findAll());
+            return "register/index";
         }
-
+        if(CourseId!= 0){
+            Course selectedCourse=courseDao.findById(CourseId).get();
+            newRegister.setCourse(selectedCourse);
+        }
+        registerDao.save(newRegister);
+        model.addAttribute("title", "Welcome");
+        return "register/welcome" ;
+    }
 }
 

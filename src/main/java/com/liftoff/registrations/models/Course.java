@@ -2,7 +2,6 @@ package com.liftoff.registrations.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,12 +33,12 @@ public class Course {
 //    @NotNull
 //    private boolean registered;
 
-//    @ManyToMany(mappedBy = "courses")
-//    private List<Register> register;
+//    @ManyToMany(mappedBy = "course")
+//    private Register registered;
 
     @OneToMany
     @JoinColumn(name="course_id")
-    private List<Register> register=new ArrayList<>();
+    private List<Register> register;
 
     public Course(int id, String coursename, String startdate, String enddate,int availability,int price) {
         this.id = id;
@@ -108,8 +107,18 @@ public class Course {
 //    public void setRegistered(boolean registered) {
 //        this.registered = registered;
 //    }
-//    public List<Register> getRegister() {
-//        return register;
-//    }
+
+    public List<Register> getRegister() {
+        return register;
+    }
+
+    public void setRegister(List<Register> register) {
+        this.register = register; }
+
+    public void additem(Register item){
+        this.register.add(item);
+
+    }
+
 
 }

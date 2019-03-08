@@ -1,11 +1,8 @@
 package com.liftoff.registrations.models;
 
-//import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -46,12 +43,10 @@ public class Register {
     @ManyToOne
     private Course course;
 
-//    public void addItem(Course item){
-//        this.courses.add(item);
-//    }
+//     @ManyToMany(mappedBy="registered")
+//     private Course course;
 
-
-    public Register(int id, String name, String address, String city,String state,int zipcode, String dob, int cardnumber) {
+    public Register(int id,Course course, String name, String address, String city,String state,int zipcode, String dob, int cardnumber) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -60,6 +55,7 @@ public class Register {
         this.dob = dob;
         this.cardnumber = cardnumber;
         this.state=state;
+        this.course=course;
     }
 
     public Register() {}
@@ -131,5 +127,19 @@ public class Register {
     }
     public void setCourse(Course course) {
         this.course=course;  }
-}
 
+//    @Override
+//    public String toString() {
+//        return "Register{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", address='" + address + '\'' +
+//                ", city='" + city + '\'' +
+//                ", state='" + state + '\'' +
+//                ", zipcode=" + zipcode +
+//                ", dob='" + dob + '\'' +
+//                ", cardnumber=" + cardnumber +
+//                ", course=" + course +
+//                '}';
+//    }
+}

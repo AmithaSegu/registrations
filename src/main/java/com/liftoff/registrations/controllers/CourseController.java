@@ -32,11 +32,10 @@ public class CourseController {
         return "course/index";
     }
 
-    @RequestMapping(value="", method = RequestMethod.POST)
-    public String processindex(Model model,@ModelAttribute Course course){
-        return "register/"+course.getId();
-
-    }
+//    @RequestMapping(value="", method = RequestMethod.POST)
+//    public String processindex(Model model,@ModelAttribute Course course){
+//        return "register/"+course.getId();
+//    }
 
     @RequestMapping(value="add",method= RequestMethod.GET)
     public String displayaddcourse(Model model){
