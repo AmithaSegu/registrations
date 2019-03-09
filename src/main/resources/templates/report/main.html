@@ -9,23 +9,22 @@
 <title th:text="${title}">Report</title>
 <br>
 <form th:object="${course}">
-
-    <!--<select th:for="course">-->
-        <!--<option>All</option>-->
-        <!--<option th:each="courses:*{course}"-->
-                <!--th:text="${courses.coursename}"-->
-                <!--th:value="${courses.id}">-->
+    <!--<label th:for="all">All</label>-->
+    <!--<select th:object="${courses}">-->
+        <!--<option th:each="course:${courses}"-->
+                <!--th:text="${course.coursename}"-->
+                <!--th:value="${course.id}">-->
 
         <!--</option>-->
 
     <!--</select>-->
-    <!--<input type="submit" value="${courses.id}"/>-->
 
-    <ol>
-        <a th:href="/report/all"><li>All</li></a>
-        <a th:href="'/report/bycourse/'+${course.id}"><li th:each="courses:*{course}"
+
+    <ul>
+        <li><a href="/report/all" th:text="All"></a></li>
+        <a th:href="'/report/bycourse/'+${course.id}"><li th:each="course:${courses}"
             th:text="${course.coursename}" th:value="${course.id}"></li></a>
-    </ol>
+    </ul>
 
 </form>
 

@@ -1,5 +1,6 @@
 package com.liftoff.registrations.controllers;
 
+
 import com.liftoff.registrations.models.Course;
 import com.liftoff.registrations.models.Register;
 import com.liftoff.registrations.models.data.CourseDao;
@@ -21,29 +22,34 @@ public class ReportController {
     @Autowired
     private CourseDao courseDao;
 
-    @RequestMapping(value="",method=RequestMethod.POST)
-    public String listreport(Model model){
+    @RequestMapping(value="",method=RequestMethod.GET)
+    public String listreport(Model model, Course course){
         model.addAttribute("title","Report");
-        Course course=courseDao.findAll();
-        model.addAttribute("course",course);
+        courseDao.findAll();
+        model.addAttribute("courses",courseDao.findAll());
         return "report/main";
     }
 
 
-    @RequestMapping(value="all",method= RequestMethod.POST)
-    public String allregister(Model model){
-        model.addAttribute("title","All Registered");
-        Register newRegister=registerDao.findAll();
-        model.addAttribute("register",newRegister);
-        return "report/listregister";
-    }
-
+//    @RequestMapping(value="all",method= RequestMethod.GET)
+//    public String allregister(Model model,Course course,Register register){
+//        model.addAttribute("title","All Registered");
+//        course.getRegister();
+//        courseDao.findAll();
+//        register.getCourse(courseDao.findById());
+//
+//        model.addAttribute("register",course.getRegister());
+//        return "report/listregister";
+//    }
+//
     @RequestMapping(value="bycourse/{id}" ,method=RequestMethod.POST)
-    public String bycourse(Model model, @PathVariable int id){
+    public String bycourse(Model model, @PathVariable int id, Register register, Course course){
         Course course=courseDao.findById(id).get();
-        Register newRegister=newRegister.getCourse(course);
-        Register register=registerDao.findAllBy(course).get();
+        register.getCourse().getId();
+        Register register=registerDao.findById(course).get();
         model.addAttribute("regbycourse",);
         return "report/listregister";
     }
 }
+
+

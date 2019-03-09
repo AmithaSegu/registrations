@@ -8,24 +8,20 @@
 <nav th:replace="fragments :: navigation"></nav>
 <title th:text="${title}">Report</title>
 <br>
-<form method="post">
-    <div th:object="${register}" th:action="/report/all">
+<form>
+    <div th:object="${course}" action="/report/all">
         <h1 th:text="title">All Registered</h1>
-        <table th:if="${not #register.isEmpty()">
+        <table >
             <tr>
                 <th>Name</th>
                 <th>CourseName</th>
             </tr>
-            <tr th:each="registers:*{register}">
-                <td th:text="${registers.name}">Name</td>
-                <td th:text="${registers.course.coursename}">Course Name</td>
+            <tr th:each="courses:${course}">
+                <td th:text="${course.coursename}">Name</td>
+                <td th:text="${register.name}">Course Name</td>
 
             </tr>
         </table>
-    </div>
-
-    <div>
-
     </div>
 
 </form>
