@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org /">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8"/>
+</head>
+<body class="container">
+<h1>Reports</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<title th:text="${title}">Report</title>
+<br>
+<form th:object="${course}">
+
+    <!--<select th:for="course">-->
+        <!--<option>All</option>-->
+        <!--<option th:each="courses:*{course}"-->
+                <!--th:text="${courses.coursename}"-->
+                <!--th:value="${courses.id}">-->
+
+        <!--</option>-->
+
+    <!--</select>-->
+    <!--<input type="submit" value="${courses.id}"/>-->
+
+    <ol>
+        <a th:href="/report/all"><li>All</li></a>
+        <a th:href="'/report/bycourse/'+${course.id}"><li th:each="courses:*{course}"
+            th:text="${course.coursename}" th:value="${course.id}"></li></a>
+    </ol>
+
+</form>
+
+
+</body>
+</html>

@@ -4,10 +4,11 @@ import com.liftoff.registrations.models.Course;
 import com.liftoff.registrations.models.Register;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public class AddRegisterCourse {
     private Course courses;
-    private Register register;
+    private List<Register> register;
 
     @NotNull
     private int registerId;
@@ -17,7 +18,7 @@ public class AddRegisterCourse {
 
     public AddRegisterCourse() {}
 
-    public AddRegisterCourse(Course courses, Register register) {
+    public AddRegisterCourse(Course courses, List<Register> register) {
         this.courses = courses;
         this.register = register;
     }
@@ -30,11 +31,11 @@ public class AddRegisterCourse {
         this.courses = courses;
     }
 
-    public Register getRegister() {
+    public List<Register> getRegister() {
         return register;
     }
 
-    public void setRegister(Register register) {
+    public void setRegister(List<Register> register) {
         this.register = register;
     }
 
@@ -54,7 +55,7 @@ public class AddRegisterCourse {
         this.courseId = courseId;
     }
 
-//    public void Course(Register item){
-//        courses.add(item);
-//    }
+    public void Course(Register item){
+        register.add(item);
+    }
 }

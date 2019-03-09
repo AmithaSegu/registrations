@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org /">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8"/>
+</head>
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+<title th:text="${title}">Report</title>
+<br>
+<form method="post">
+    <div th:object="${register}" th:action="/report/all">
+        <h1 th:text="title">All Registered</h1>
+        <table th:if="${not #register.isEmpty()">
+            <tr>
+                <th>Name</th>
+                <th>CourseName</th>
+            </tr>
+            <tr th:each="registers:*{register}">
+                <td th:text="${registers.name}">Name</td>
+                <td th:text="${registers.course.coursename}">Course Name</td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div>
+
+    </div>
+
+</form>
+
+</body>
+</html>

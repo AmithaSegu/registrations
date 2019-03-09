@@ -43,14 +43,14 @@ public class Course {
     @JoinColumn(name="course_id")
     private List<Register> register;
 
-    public Course(int id, String coursename, String startdate, String enddate,int availability,int price) {
+    public Course(int id, List<Register> register,String coursename, String startdate, String enddate,int availability,int price) {
         this.id = id;
         this.coursename = coursename;
         this.startdate = startdate;
         this.enddate = enddate;
         this.availability = availability;
         this.price = price;
-        //this.registered = registered;
+        this.register = register;
     }
 
     public Course() { }
@@ -118,10 +118,10 @@ public class Course {
     public void setRegister(List<Register> register) {
         this.register = register; }
 
-    public void additem(Register item){
-        this.register.add(item);
-
-    }
+//    public void additem(Register item){
+//        this.register.add(item);
+//
+//    }
 
 
 }

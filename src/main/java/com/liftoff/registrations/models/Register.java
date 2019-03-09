@@ -1,7 +1,5 @@
 package com.liftoff.registrations.models;
 
-
-
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -58,7 +56,7 @@ public class Register {
         this.dob = dob;
         this.cardnumber = cardnumber;
         this.state=state;
-        this.course=course;
+//        this.course=course;
     }
 
     public Register() {}

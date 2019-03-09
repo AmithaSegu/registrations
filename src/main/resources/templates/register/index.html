@@ -12,12 +12,14 @@
 
 
 </div>
-<form  th:object="${register}" action="/register/add">
-    <!--<div th:object="${course}">-->
-        <!--<label th:for="coursename">CourseName:</label>-->
-        <!--<tr th:text="${course.coursename}">CourseName</tr>-->
+<form method="post" th:object="${register}" >
+    <div th:object="${course}">
+        <label th:for="coursename">CourseName:</label>
+        <tr th:text="${course.coursename}">CourseName</tr>
+        <label th:for="price">Price:</label>
+        <tr th:text="${course.price}">Price</tr>
 
-    <!--</div>-->
+    </div>
     <div class="form-group">
         <label th:for="name">Name</label>
         <input class="form-control" th:field="*{name}" />
@@ -34,14 +36,17 @@
         <label th:for="zipcode">Zipcode</label>
         <input class="form-control" th:field="*{zipcode}" />
         <span th:errors="*{zipcode}" class="error"></span>
-
-
         <label th:for="dob">Date of Birth</label>
         <input class="form-control" th:field="*{dob}" />
         <span th:errors="*{dob}" class="error"></span>
         <label th:for="cardnumber">Card Number</label>
         <input class="form-control" th:field="*{cardnumber}" />
         <span th:errors="*{cardnumber}" class="error"></span>
+
     </div>
-    <a th:href="'/register/welcome'"><input type="button" value="Register"/></a>
+    <input  name="courseId" th:value="${course.id}" type="hidden" />
+    <!--<a th:href="'/register/welcome'"></a>-->
+    <input type="submit" value="Welcome"/>
+
+    <!--<input type="button" value="Register"/>-->
 </form>
