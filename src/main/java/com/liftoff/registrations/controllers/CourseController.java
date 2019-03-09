@@ -28,7 +28,7 @@ public class CourseController {
     public String index(Model model){
         model.addAttribute("title","List Courses");
         model.addAttribute("courses", courseDao.findAll());
-        model.addAttribute(new Course());
+        //model.addAttribute(new Course());
         return "course/index";
     }
 
