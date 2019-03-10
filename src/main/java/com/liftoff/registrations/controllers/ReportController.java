@@ -31,25 +31,19 @@ public class ReportController {
     }
 
 
-//    @RequestMapping(value="all",method= RequestMethod.GET)
-//    public String allregister(Model model,Course course,Register register){
-//        model.addAttribute("title","All Registered");
-//        course.getRegister();
-//        courseDao.findAll();
-//        register.getCourse(courseDao.findById());
-//
-//        model.addAttribute("register",course.getRegister());
-//        return "report/listregister";
-//    }
-//
-    @RequestMapping(value="bycourse/{id}" ,method=RequestMethod.POST)
-    public String bycourse(Model model, @PathVariable int id, Register register, Course course){
-        Course course=courseDao.findById(id).get();
-        register.getCourse().getId();
-        Register register=registerDao.findById(course).get();
-        model.addAttribute("regbycourse",);
+    @RequestMapping(value="all",method= RequestMethod.GET)
+    public String allregister(Model model, Course course, Register register){
+        model.addAttribute("title","All Registered");
+        model.addAttribute("register",registerDao.findAll());
         return "report/listregister";
     }
-}
 
+    @RequestMapping(value="bycourse/{id}" ,method=RequestMethod.GET)
+    public String bycourse(Model model, @PathVariable int id, Register register){
+        Course course=courseDao.findById(id).get();
+        model.addAttribute("course",courseDao.findById(id).get());
+        model.addAttribute("register",course.getRegister());
+        return "report/listbycourse";
+    }
+}
 

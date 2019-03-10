@@ -18,12 +18,10 @@
         <!--</option>-->
 
     <!--</select>-->
-
-
     <ul>
         <li><a href="/report/all" th:text="All"></a></li>
-        <a th:href="'/report/bycourse/'+${course.id}"><li th:each="course:${courses}"
-            th:text="${course.coursename}" th:value="${course.id}"></li></a>
+        <li th:each="course:${courses}">
+            <a th:href="'/report/bycourse/'+${course.id}" th:text="${course.coursename}" th:value="${course.id}"></a></li>
     </ul>
 
 </form>
